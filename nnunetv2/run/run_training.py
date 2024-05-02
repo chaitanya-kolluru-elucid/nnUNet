@@ -132,7 +132,9 @@ def run_ddp(rank, dataset_name_or_id, configuration, fold, tr, p, use_compressed
 
     if val_with_best:
         nnunet_trainer.load_checkpoint(join(nnunet_trainer.output_folder, 'checkpoint_best.pth'))
-    nnunet_trainer.perform_actual_validation(npz)
+
+    if fold != 'all':
+        nnunet_trainer.perform_actual_validation(npz)
     cleanup_ddp()
 
 
@@ -212,7 +214,9 @@ def run_training(dataset_name_or_id: Union[str, int],
 
         if val_with_best:
             nnunet_trainer.load_checkpoint(join(nnunet_trainer.output_folder, 'checkpoint_best.pth'))
-        nnunet_trainer.perform_actual_validation(export_validation_probabilities)
+
+        if fold != 'all':
+            nnunet_trainer.perform_actual_validation(export_validation_probabilities)
 
 
 def run_training_entry():
