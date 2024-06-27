@@ -29,9 +29,8 @@ class NibabelIO(BaseReaderWriter):
     IMPORTANT: Run nnUNetv2_plot_overlay_pngs to verify that this did not destroy the alignment of data and seg!
     """
     supported_file_endings = [
+        '.nii',
         '.nii.gz',
-        '.nrrd',
-        '.mha'
     ]
 
     def read_images(self, image_fnames: Union[List[str], Tuple[str, ...]]) -> Tuple[np.ndarray, dict]:
@@ -107,9 +106,8 @@ class NibabelIOWithReorient(BaseReaderWriter):
     IMPORTANT: Run nnUNetv2_plot_overlay_pngs to verify that this did not destroy the alignment of data and seg!
     """
     supported_file_endings = [
+        '.nii',
         '.nii.gz',
-        '.nrrd',
-        '.mha'
     ]
 
     def read_images(self, image_fnames: Union[List[str], Tuple[str, ...]]) -> Tuple[np.ndarray, dict]:
